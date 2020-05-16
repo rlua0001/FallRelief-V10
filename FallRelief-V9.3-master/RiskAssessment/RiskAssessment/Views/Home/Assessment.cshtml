@@ -1,0 +1,153 @@
+﻿@model RiskAssessment.Models.SessionModel
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="~/Content/open-iconic-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.theme.default.min.css" rel="stylesheet" />
+
+    <link href="~/Content/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/aos.css" rel="stylesheet" />
+
+    <link href="~/Content/ionicons.min.css" rel="stylesheet" />
+
+    <link href="~/Content/flaticon.css" rel="stylesheet" />
+
+    <link href="~/Content/icomoon.css" rel="stylesheet" />
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    <link href="~/Content/homeaction.css" rel="stylesheet" />
+
+   
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+
+
+
+        .card {
+            transition: -webkit-transform 0.3s ease;
+            border: none;
+        }
+
+
+            .card:hover {
+                transform: scale(1.01, 1.01);
+                cursor: pointer;
+            }
+
+        .card-img-top {
+            width: 100%;
+            height: 25vw;
+            object-fit: cover;
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    <header>
+        <a href="/Home/Index">
+            <img src="~/Content/Fall_Relief_edited_new.png" style="width:20%; height:20%; left:50em" />
+        </a>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href="/Home/Index" class="nav-link">Home</a></li>
+                <li class="active"><a href="/Home/Assessment" class="nav-link">Assessment</a></li>
+                <li><a href="/Home/Health Facility" class="nav-link">Health Facility</a></li>
+                <li><a href="/Home/EmergencyHelplines" class="nav-link">Emergency Helplines</a></li>
+            </ul>
+        </div>
+
+    </header>
+    <section class="ftco-section ftco-no-pt" style="padding-bottom:20px">
+
+
+        <div class="container">
+            <div class="col-md-12 heading-section text-center">
+                <h2 class="mb-4">Welcome to Fall Relief</h2>
+
+
+                <p>
+                    Most of us will have experienced a fall  at some point.<br />Indeed, there is no denying
+                    that the chance of falling does increaseas we age.<br /> However, we should not take falls  as a normal part of
+                    getting older into granted. <br />In fact we can mitigate it by conducting a multi-faceted assessment.<br />The fall
+                    rate can be reduced by 30-40% followed by our multi factorial interventions.
+
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="row col-12" style="text-align:center;width:100%;align-items:center">
+        <div class="col-md-2"></div>
+        <div class="col-md-4" style="padding:20px">
+
+            <div class="card">
+                <img class="card-img-top" src="~/Content/health assessment.jpg" style="opacity:0.8" />
+
+                <div class="body">
+                    <span class="subheading">Health Assessment</span>
+                    <p>
+                        Personal risk factors can affect the body of the person you care about.This assessment helps you
+                        learn what is putting him/her at risk of falling and provides a personalized intervention plan in terms of exercise and
+                        nutrition for   improving the current situation
+                    </p>
+                    <a href="@Url.Action("Instruction","Home",new
+                {
+                    @SessionModel = Session["SessionID"],
+                    @number = 1
+                })" class="btn btn-primary">Start</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="padding:20px">
+
+            <div class="card">
+                <img class="card-img-top" src="~/Content/home safety.jpg" style="opacity:0.8" />
+
+
+                <div class="body">
+                    <span class="subheading">Home Safety Assessment</span>
+                    <p>
+                        Environmental risk factors relate to the world around the person  you care about. This assessment helps
+                        you check your home for hazards that could lead to a fall, offer tips on making home safer and provide
+                        a customized home safety recommendation plan
+                    </p>
+                    <a href="@Url.Action("Instruction","Home",new
+                {
+                    @SessionModel = Session["SessionID"],
+                    @number = 2
+                })" class="btn btn-primary">Start</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+﻿@model  RiskAssessment.Models.ActionPlanModel
+<html>
+<head>
+
+    <title>Fall Relief</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="~/Content/open-iconic-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.theme.default.min.css" rel="stylesheet" />
+
+    <link href="~/Content/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/aos.css" rel="stylesheet" />
+
+    <link href="~/Content/ionicons.min.css" rel="stylesheet" />
+
+    <link href="~/Content/flaticon.css" rel="stylesheet" />
+
+    <link href="~/Content/icomoon.css" rel="stylesheet" />
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    <link href="~/Content/homeaction.css" rel="stylesheet" />
+
+    <style>
+        .column {
+            padding: 0 10px;
+        }
+
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 20px;
+            margin: 10px 10px 15px 5px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+            }
+
+            .collapsible:after {
+                content: '\002B';
+                color: white;
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+            }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            width: 100%;
+        }
+
+        img {
+            width: 80%;
+        }
+
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 15px;
+                height: 50px;
+                vertical-align: bottom;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #afa939;
+                color: white;
+            }
+
+        .card-img-top {
+            width: 100%;
+            height: 15vw;
+            object-fit: cover;
+        }
+
+
+        .title {
+            background-color: white;
+            padding: 30px 40px 30px 20px;
+            background: rgba(256, 256, 256, 0.5);
+            display: inline-block;
+            font-family: Orbitron;
+        }
+
+
+        .container-fluid {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+
+
+        <a href="/Home/Index">
+            <img src="~/Content/Fall_Relief_edited_new.png" style="width:20%; height:20%; left:50em" />
+        </a>
+
+        <div id='cssmenu'>
+            <ul>
+                <li><a href="/Home/Index" class="nav-link">Home</a></li>
+                <li><a href="/Home/Assessment" class="nav-link">Assessment</a></li>
+                <li><a href="/Home/Health Facility" class="nav-link">Health Facility</a></li>
+                <li><a href="/Home/EmergencyHelplines" class="nav-link">Emergency Helplines</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <section class="ftco-section ftco-no-pt" style="width:100%">
+
+
+        <div class="container">
+            <div class="col-md-12 heading-section text-center">
+                <h2 class="mb-4">Action Plan</h2>
+                <input type="hidden" name="SessionID" value="@(Session["SessionID"])" />
+                <a href="/Home/AssessmentResult" class="btn btn-primary">
+                    Previous
+                </a>
+
+                <!--<a href="/Home/AssessmentResult" class="btn btn-primary" style="padding:4px 30px 4px 30px;margin: 10px 5px">Previous</a>-->
+
+            </div>
+        </div>
+    </section>
+
+
+
+    @if (Model.AssessmentTypeID == 1)
+    {
+
+
+
+
+        @* list out the risks *@
+        <section class="ftco-section ftco-no-pt" style="padding-bottom:20px">
+
+
+            <div class="container">
+                <div class="col-md-12 heading-section text-center">
+
+                    <h2 class="subheading" style="font-size:18px">Diet Plan</h2>
+                    <p style="font-size:20px;text-align:justify">
+                        Here are some food options you should think to incorporate into your daily diet to help you improve your overall health.
+
+                        The food options below are have been designed to target towards the areas which we have identified to be a risk in increase the likelihood of you falling in the future based off the assessment result.
+                    </p>
+
+
+                </div>
+
+
+
+
+
+                @for (int i = 0; i < Model.Dlist.Count; i++)
+                {
+
+                    <button class="collapsible">
+                        @Html.Raw(Model.Dlist[i].Risk)
+                    </button>
+
+                    <div class="content">
+
+                        <h2>Here are some nutritious food items that can help you prevent falls</h2>
+                        @for (int x = 0; x < Model.Dlist[i].Nlist.Count; x++)
+                        {
+
+                            <h1>@Html.Raw(Model.Dlist[i].Nlist[x].Nutrient)</h1>
+
+                            <p>@Html.Raw(Model.Dlist[i].Nlist[x].Description)</p>
+
+                            <p>Some of the food sources which contain high @Html.Raw(Model.Dlist[i].Nlist[x].Nutrient) are listed below</p>
+
+                            for (int z = 0; z < Model.Dlist[i].Nlist[x].Flist.Count; z++)
+                            {
+                                <div class="column col-md-4">
+                                    <div class="card-deck">
+                                        <div class="card" style="width:500px">
+
+
+                                            <div class="card-body padding:20px">
+
+                                                <h4 class="card-title">@Html.Raw(Model.Dlist[i].Nlist[x].Flist[z].FoodGroupName)</h4>
+
+                                                <p class="card-text">>@Html.Raw(Model.Dlist[i].Nlist[x].Flist[z].Description)</p>
+
+                                            </div>
+                                            <div class="card">
+                                                <img class="card-img-top" src="@Html.Raw(Model.Dlist[i].Nlist[x].Flist[z].ImgDir)" alt="Card image" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            }
+
+                        }
+                    </div>
+
+                }
+
+                <div class="col-md-12 heading-section text-center">
+
+                    <h2 class="subheading" style="font-size:18px">Exercise Plan</h2>
+                    <p style="font-size:20px;text-align:justify">
+                        Here are some exercises you should think to incorporate into your daily life to help you improve your overall health.
+                        The exercises below are have been designed to target towards the areas which we have identified to be a risk in increase the likelihood of you falling in the future based off the assessment result.
+                    </p>
+
+
+                </div>
+
+                @for (int i = 0; i < Model.Dlist.Count; i++)
+                {
+
+                    <button class="collapsible">
+                        @Html.Raw(Model.Dlist[i].Risk)
+                    </button>
+                    <div class="content">
+                        <p>Below are your targeted exercises with their description to reduce @Html.Raw(Model.Dlist[i].Risk)</p>
+                        @for (int x = 0; x < Model.Dlist[i].Elist.Count; x++)
+                        {
+                            <h1>@Html.Raw(Model.Dlist[i].Elist[x].Excerise)</h1>
+                            <div class="card">
+                                <div class="card-horizontal">
+                                    <img src="@Html.Raw(Model.Dlist[i].Elist[x].ImgDir)" style="width:40%;float:left"/>
+
+
+                                    @for (int z = 0; z < Model.Dlist[i].Elist[x].Slist.Count; z++)
+                                    {
+                                    <div class="body" style="text-align:left">
+                                        <h2>Step:@Html.Raw(Model.Dlist[i].Elist[x].Slist[z].StepNo)</h2>
+
+                                        <p>@Html.Raw(Model.Dlist[i].Elist[x].Slist[z].Description)"</p>
+                                        </div>
+
+                                        }
+
+                                    </div>
+                                </div>
+                                        }
+
+                                    </div>
+                                    }
+
+                                </div>
+</section>
+    }
+
+
+    
+    else
+    {
+   
+    <table id="customers">
+
+
+
+        <tr>
+
+        <th> Risk </th>
+
+        <th> Action Required</th>
+
+        <th> Location</th>
+
+        <th> Who</th>
+
+        <th> Status</th>
+
+        </tr>
+
+
+
+        @for (int i = 0; i < Model.HSList.Count; i++)
+        {
+            <tr>
+
+                <td> @Html.Raw(Model.HSList[i].Risk) </td>
+
+                <td> @Html.Raw(Model.HSList[i].ActionRequired) </td>
+
+                <td> @Html.Raw(Model.HSList[i].Location) </td>
+
+                <td> @Html.Raw(Model.HSList[i].Who) </td>
+
+                <td> @Html.Raw(Model.HSList[i].Status) </td>
+
+
+            </tr>
+        }
+    </table>
+    
+    }
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                }
+                else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+

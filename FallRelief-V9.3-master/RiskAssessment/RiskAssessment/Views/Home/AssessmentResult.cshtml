@@ -1,0 +1,175 @@
+﻿@model  RiskAssessment.Models.RiskLevelModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fall Relief</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <style>
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            margin: 10px 10px 15px 10px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+            }
+
+            .collapsible:after {
+                content: '\002B';
+                color: white;
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+            }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            width: 100%;
+            
+        }
+
+        .card{
+            border:none;
+           
+        }
+
+       
+    </style>
+</head>
+<body>
+    <header>
+
+
+        <a href="/Home/Index">
+            <img src="~/Content/Fall_Relief_edited_new.png" style="width:20%; height:20%; left:50em" />
+        </a>
+
+        <div id='cssmenu'>
+            <ul>
+                <li><a href="/Home/Index" class="nav-link">Home</a></li>
+                <li><a href="/Home/Assessment" class="nav-link">Assessment</a></li>
+                <li><a href="/Home/Health Facility" class="nav-link">Health Facility</a></li>
+                <li><a href="/Home/EmergencyHelplines" class="nav-link">Emergency Helplines</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="ftco-section ftco-no-pt" style="padding-bottom:20px">
+        <div class="container">
+            <div class="col-md-12 heading-section text-center">
+                <h2 class="mb-4">Assessment Result</h2>
+                <p>
+                    @ViewBag.AssessmentType
+
+                </p>
+                <p>Risk Level:@ViewBag.RiskLevel</p>
+                @using (Html.BeginForm("ActionPlan", "Home", FormMethod.Post))
+                {
+
+                    <input type="hidden" name="SessionID" value="@(Session["SessionID"])" />
+                    <button type="Submit" class="btn btn-primary">Generate Plan</button>
+
+
+                }
+
+            </div>
+        </div>
+    </section>
+
+   
+
+
+
+
+
+    @* <div>
+            @for (int i = 0; i < Model.RiskList.Count; i++)
+            {
+
+                <span style="color: red">@Html.Raw(Model.RiskList[i].RiskName)"</span>
+                <br />
+                <br />
+                <span style="color: blue">@Html.Raw(Model.RiskList[i].RiskStatement)"</span>
+                <img src="@Html.Raw(Model.RiskList[i].ImgDir)" />
+
+            }
+
+
+        </div>*@
+
+<div class="container">
+
+    @for (int i = 0; i < Model.RiskList.Count; i++)
+    {
+        
+            <button class="collapsible">
+                @Html.Raw(Model.RiskList[i].RiskName)
+            </button>
+            <div class="content">
+                <div class="card">
+                    <div class="col-md-12">
+                        <div class="card-horizontal"style="display:flex">
+                            <img src="@Html.Raw(Model.RiskList[i].ImgDir)" style="width:40%;float:left" />
+                            <div class="body" style="text-align:right">
+
+                                <p style="font-size:18px">@Html.Raw(Model.RiskList[i].RiskStatement)</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+
+    }
+
+</div>
+    <br />
+    <br />
+    
+      
+            
+
+
+
+            <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    });
+                }
+            </script>
+
+
+
+</body>
+</html>

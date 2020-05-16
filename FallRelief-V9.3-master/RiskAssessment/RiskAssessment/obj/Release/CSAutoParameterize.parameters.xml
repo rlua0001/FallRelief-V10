@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="fall_reliefEntities-Web.config Connection String" description="fall_reliefEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/RiskAssessmentModel.csdl|res://*/RiskAssessmentModel.ssdl|res://*/RiskAssessmentModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=tcp:fallreliefc14.database.windows.net;initial catalog=fall_relief;persist security info=True;user id=niral;password=C14fallrelief;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Aishwarya\\Source\\Repos\\fallrelief_v9\.2\.9\\RiskAssessment\\RiskAssessment\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='fall_reliefEntities']/@connectionString" />
+  </parameter>
+</parameters>
